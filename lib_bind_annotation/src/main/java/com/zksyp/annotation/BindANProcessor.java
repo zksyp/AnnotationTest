@@ -1,5 +1,6 @@
 package com.zksyp.annotation;
 
+import com.google.auto.service.AutoService;
 import com.zksyp.viewInject.ViewBindInjector;
 import com.zksyp.viewInject.ViewInfo;
 
@@ -11,6 +12,7 @@ import java.util.Set;
 import javax.annotation.processing.AbstractProcessor;
 import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
+import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.PackageElement;
@@ -27,7 +29,7 @@ import javax.tools.JavaFileObject;
  * Desc:
  */
 
-
+@AutoService(Processor.class)
 public class BindANProcessor extends AbstractProcessor {
 
 
