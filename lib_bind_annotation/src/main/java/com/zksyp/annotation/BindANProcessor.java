@@ -16,8 +16,6 @@ import javax.lang.model.element.Element;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
-import javax.lang.model.util.Elements;
-import javax.lang.model.util.Types;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
@@ -29,16 +27,12 @@ import javax.tools.JavaFileObject;
  * Desc:
  */
 
+
 public class BindANProcessor extends AbstractProcessor {
 
 
     private Filer filer;
-    private Elements elementUtils;
-    private Types typeUtils;
     private ProcessingEnvironment processingEnv;
-    private String fqClassName;
-    private String className;
-    private String packageName;
 
 
     @Override
@@ -46,8 +40,6 @@ public class BindANProcessor extends AbstractProcessor {
         super.init(env);
 
         filer = env.getFiler();
-        elementUtils = env.getElementUtils();
-        typeUtils = env.getTypeUtils();
         processingEnv = env;
     }
 
@@ -84,9 +76,9 @@ public class BindANProcessor extends AbstractProcessor {
             TypeElement classElement = (TypeElement) ele;
             PackageElement packageElement = (PackageElement) ele.getEnclosingElement();
 
-            fqClassName = classElement.getQualifiedName().toString();
-            packageName = packageElement.getQualifiedName().toString();
-            className = getClassName(classElement, packageName);
+            String fqClassName = classElement.getQualifiedName().toString();
+            String packageName = packageElement.getQualifiedName().toString();
+            String className = getClassName(classElement, packageName);
 
             VariableElement varEle = (VariableElement) ele;
             int id = varEle.getAnnotation(BindView3.class).value();

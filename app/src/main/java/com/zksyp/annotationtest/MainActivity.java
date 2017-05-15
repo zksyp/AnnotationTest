@@ -10,8 +10,6 @@ import com.zksyp.annotationtest.AnnotateHelper.BindView1;
 import com.zksyp.annotationtest.AnnotateHelper.BindView2;
 import com.zksyp.lib_bind.BindViewTest;
 
-import butterknife.ButterKnife;
-
 public class MainActivity extends AppCompatActivity {
 
     @BindView1(R.id.tv_title1)
@@ -27,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
         AnnotateBindUtils.bind(this);
         BindViewTest.bind(this);
         tv1.setText("Bind View One Succeed");
