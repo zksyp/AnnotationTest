@@ -1,0 +1,1 @@
+include ':app', ':lib_bind_annotation', ':lib_bind'
