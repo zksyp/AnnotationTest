@@ -14,10 +14,12 @@ import javax.annotation.processing.Filer;
 import javax.annotation.processing.ProcessingEnvironment;
 import javax.annotation.processing.Processor;
 import javax.annotation.processing.RoundEnvironment;
+import javax.annotation.processing.SupportedAnnotationTypes;
 import javax.lang.model.element.Element;
 import javax.lang.model.element.PackageElement;
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.element.VariableElement;
+import javax.lang.model.util.Elements;
 import javax.tools.Diagnostic;
 import javax.tools.JavaFileObject;
 
@@ -30,17 +32,19 @@ import javax.tools.JavaFileObject;
  */
 
 @AutoService(Processor.class)
+@SupportedAnnotationTypes("com.zksyp.annotation.BindView3")
 public class BindANProcessor extends AbstractProcessor {
 
 
     private Filer filer;
+    private Elements elementUtils;
     private ProcessingEnvironment processingEnv;
 
 
     @Override
     public synchronized void init(ProcessingEnvironment env) {
         super.init(env);
-
+        elementUtils = env.getElementUtils();
         filer = env.getFiler();
         processingEnv = env;
     }
@@ -75,8 +79,8 @@ public class BindANProcessor extends AbstractProcessor {
         for (Element ele : env.getElementsAnnotatedWith(BindView3.class)) {
             processingEnv.getMessager().printMessage(Diagnostic.Kind.NOTE, "ele = " + ele);
 
-            TypeElement classElement = (TypeElement) ele;
-            PackageElement packageElement = (PackageElement) ele.getEnclosingElement();
+            TypeElement classElement = (TypeElement) ele.getEnclosingElement();
+            PackageElement packageElement = elementUtils.getPackageOf(classElement);
 
             String fqClassName = classElement.getQualifiedName().toString();
             String packageName = packageElement.getQualifiedName().toString();

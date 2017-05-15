@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="false"
+        jar="/Users/kaishen/AnnotationTest/lib_bind_annotation/build/libs/lib_bind_annotation.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="ae8439b5e8bf0f467a9ea7f5f1dc82ab5638f593">
+        <dex dex="/Users/kaishen/AnnotationTest/app/build/intermediates/pre-dexed/debug/lib_bind_annotation_f512cdbd4d482afc82658f8a2ca95af23dc874f4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kaishen/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/0.3/4073ab16ab4aceb9a217273da6442166bf51ae16/auto-common-0.3.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4073ab16ab4aceb9a217273da6442166bf51ae16">
+        <dex dex="/Users/kaishen/AnnotationTest/app/build/intermediates/pre-dexed/debug/auto-common-0.3_8c62c627bf3f423dc3ce972000321d0b632bca7e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kaishen/.gradle/caches/modules-2/files-2.1/com.google.auto.service/auto-service/1.0-rc2/51033a5b8fcf7039159e35b6878f106ccd5fb35f/auto-service-1.0-rc2.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="51033a5b8fcf7039159e35b6878f106ccd5fb35f">
+        <dex dex="/Users/kaishen/AnnotationTest/app/build/intermediates/pre-dexed/debug/auto-service-1.0-rc2_7b5e0555455b3bfee2383352dc2d0f5b45c891e4.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/kaishen/AnnotationTest/lib_bind/build/intermediates/bundles/default/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="4dfab06e2b6c1ef2e74cab61f3ec55aac60a788e">
+        <dex dex="/Users/kaishen/AnnotationTest/app/build/intermediates/pre-dexed/debug/classes_589352350278dd3eb4956419d57e862573389de0.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Applications/Android Studio.app/Contents/gradle/m2repository/com/google/guava/guava/18.0/guava-18.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.2"
+        sha1="cce0823396aa693798f8882e64213b1772032b09">
+        <dex dex="/Users/kaishen/AnnotationTest/app/build/intermediates/pre-dexed/debug/guava-18.0_e11ced1631feb7c9800790c98fd765d3bed1b86c.jar" />
+    </item>
+
+</items>

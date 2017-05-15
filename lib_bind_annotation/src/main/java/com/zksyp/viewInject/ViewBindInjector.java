@@ -39,9 +39,9 @@ public class ViewBindInjector {
     public String brewJava() throws Exception {
         StringBuilder builder = new StringBuilder();
         builder.append("// Generated code from BindViewTest. Do not modify!\n");
-        builder.append("package").append(packageName).append(";\n\n");
+        builder.append("package ").append(packageName).append(";\n\n");
         builder.append("import android.view.View;\n");
-        builder.append("import com.example.viewInject.Finder;\n");
+        builder.append("import com.zksyp.lib_bind.Finder;\n");
         builder.append("import com.zksyp.lib_bind.AbstractBinder;\n");
         builder.append('\n');
 
@@ -66,7 +66,7 @@ public class ViewBindInjector {
             sb.append("  view = ");
             sb.append("finder.findViewById(source , ");
             sb.append(viewInfo.getId()).append(" );\n");
-            sb.append("target.").append(viewInfo.getName()).append(" = ");
+            sb.append("  target.").append(viewInfo.getName()).append(" = ");
             sb.append("finder.castView( view ").append(", ").append(viewInfo.getId()).append(" , \"");
             sb.append(viewInfo.getName() + " \" );");
         }
