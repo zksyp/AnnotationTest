@@ -9,3 +9,4 @@
 .gradle/3.3/tasks/_lib_bind_compileReleaseJavaWithJavac/localClassSetAnalysis/localClassSetAnalysis.lock
 .gradle/3.3/tasks/_lib_bind_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.bin
 .gradle/3.3/tasks/_lib_bind_compileReleaseJavaWithJavac/localJarClasspathSnapshot/localJarClasspathSnapshot.lock
+*.rawproto
