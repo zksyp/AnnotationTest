@@ -7,6 +7,7 @@ import com.zksyp.viewInject.ViewInfo;
 
 import java.io.Writer;
 import java.util.LinkedHashMap;
+import java.util.LinkedHashSet;
 import java.util.Map;
 import java.util.Set;
 
@@ -38,7 +39,7 @@ import javax.tools.JavaFileObject;
  */
 
 @AutoService(Processor.class)
-@SupportedAnnotationTypes({"com.zksyp.annotation.BindView3"})
+@SupportedAnnotationTypes({"com.zksyp.annotation.BindView3","com.zksyp.annotation.BindView4"})
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class BindANProcessor extends AbstractProcessor {
 
@@ -48,18 +49,18 @@ public class BindANProcessor extends AbstractProcessor {
     private Messager messager;
     private Types typeUtils;
 
-//    @Override
-//    public Set<String> getSupportedAnnotationTypes() {
-//        Set<String> annotations = new LinkedHashSet<String>();
-//        annotations.add(BindView3.class.getCanonicalName());
-//        return annotations;
-//
-//    }
-//
-//    @Override
-//    public SourceVersion getSupportedSourceVersion() {
-//        return SourceVersion.latestSupported();
-//    }
+    @Override
+    public Set<String> getSupportedAnnotationTypes() {
+        Set<String> annotations = new LinkedHashSet<String>();
+        annotations.add(BindView3.class.getCanonicalName());
+        return annotations;
+
+    }
+
+    @Override
+    public SourceVersion getSupportedSourceVersion() {
+        return SourceVersion.latestSupported();
+    }
 
     @Override
     public synchronized void init(ProcessingEnvironment env) {
@@ -90,22 +91,22 @@ public class BindANProcessor extends AbstractProcessor {
             }
         }
 
-//        Map<String, ViewBindInjector2> targetViewMap4 = findAndParseTargets4(roundEnv);
-//        for (String key : targetViewMap4.keySet()) {
-//            ViewBindInjector2 bindInjector = targetViewMap4.get(key);
-//
-//            try {
-//                JavaFileObject jfo = filer.createSourceFile(bindInjector.getClassFullName()
-//                        , bindInjector.getTypeElement());
-//                Writer w = jfo.openWriter();
-//                w.write(bindInjector.brewJava());
-//                w.flush();
-//                w.close();
-//            } catch (Exception e) {
-//                error(bindInjector.getTypeElement(), "Unable to bind for type %s: %s"
-//                        , bindInjector.getTypeElement(), e.getMessage());
-//            }
-//        }
+        Map<String, ViewBindInjector2> targetViewMap4 = findAndParseTargets4(roundEnv);
+        for (String key : targetViewMap4.keySet()) {
+            ViewBindInjector2 bindInjector = targetViewMap4.get(key);
+
+            try {
+                JavaFileObject jfo = filer.createSourceFile(bindInjector.getClassFullName()
+                        , bindInjector.getTypeElement());
+                Writer w = jfo.openWriter();
+                w.write(bindInjector.brewJava());
+                w.flush();
+                w.close();
+            } catch (Exception e) {
+                error(bindInjector.getTypeElement(), "Unable to bind for type %s: %s"
+                        , bindInjector.getTypeElement(), e.getMessage());
+            }
+        }
 
         return true;
     }
