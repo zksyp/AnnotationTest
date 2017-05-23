@@ -18,17 +18,17 @@ import java.util.Map;
  */
 
 public class BindViewTest {
-    static final Map<Class<?>, AbstractBinder<Object>> BINDERS = new LinkedHashMap<>();
+    private static final Map<Class<?>, AbstractBinder<Object>> BINDERS = new LinkedHashMap<>();
 
     public static void bind(Activity activity) {
         AbstractBinder<Object> binder = findBinder(activity);
         binder.bind(Finder.ACTIVITY, activity, activity);
     }
 
-    public static void inject(View view) {
+    public static void bind(View view) {
     }
 
-    public static void inject(Object target, View view) {
+    public static void bind(Object target, View view) {
         AbstractBinder<Object> binder = findBinder(target);
         binder.bind(Finder.VIEW, target, view);
     }
@@ -42,7 +42,7 @@ public class BindViewTest {
                 Class binderClazz = Class.forName(clazz.getName() + ViewBindInjector.SUFFIX);
                 binder = (AbstractBinder<Object>) binderClazz.newInstance();
                 if (binder != null) {
-                    Log.e("binder", "true");
+                    Log.e("binder", binder.toString());
                 }
                 BINDERS.put(clazz, binder);
             } catch (ClassNotFoundException e) {
@@ -55,4 +55,6 @@ public class BindViewTest {
         }
         return binder;
     }
+
+
 }

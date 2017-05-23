@@ -37,7 +37,7 @@ public class AnnotateBindUtils {
                 BindView2 bindView2 = field.getAnnotation(BindView2.class);
                 if (bindView2 != null) {
                     try {
-                        field.setAccessible(true);
+                        field.setAccessible(true);//可以获取该类中置为private的类的值
                         field.set(activity, activity.findViewById((bindView2.value())));
                     } catch (IllegalAccessException e) {
                         e.printStackTrace();

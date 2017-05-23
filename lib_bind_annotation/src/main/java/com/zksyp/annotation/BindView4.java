@@ -1,6 +1,4 @@
-package com.zksyp.annotationtest.AnnotateHelper;
-
-import android.support.annotation.IdRes;
+package com.zksyp.annotation;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -10,14 +8,12 @@ import java.lang.annotation.Target;
 /**
  * Created with Android Studio.
  * User:kaishen
- * Date:2017/5/10
- * Time:下午3:46
+ * Date:2017/5/23
+ * Time:上午10:02
  * Desc:
  */
-
 @Target(ElementType.FIELD)
-@Retention(RetentionPolicy.RUNTIME)
-public @interface BindView1 {
-    @IdRes
+@Retention(RetentionPolicy.CLASS)
+public @interface BindView4 {
     int value();
 }

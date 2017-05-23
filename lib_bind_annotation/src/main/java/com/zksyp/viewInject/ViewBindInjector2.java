@@ -8,13 +8,12 @@ import javax.lang.model.element.TypeElement;
 /**
  * Created with Android Studio.
  * User:kaishen
- * Date:2017/5/11
- * Time:下午4:08
+ * Date:2017/5/23
+ * Time:上午9:57
  * Desc:
  */
 
-public class ViewBindInjector {
-
+public class ViewBindInjector2 {
     private String packageName;
     private String targetClassName;
     private TypeElement typeElement;
@@ -22,7 +21,7 @@ public class ViewBindInjector {
     public static final String SUFFIX = "$$BINDVIEW";
     private Map<Integer, ViewInfo> idViewMap = new HashMap<>();
 
-    public ViewBindInjector(String packageName, String className) {
+    public ViewBindInjector2(String packageName, String className) {
         this.packageName = packageName;
         this.targetClassName = className;
         this.suffixClassName = className + SUFFIX;
@@ -41,17 +40,10 @@ public class ViewBindInjector {
         builder.append("// Generated code from BindViewTest. Do not modify!\n");
         builder.append("package ").append(packageName).append(";\n\n");
         builder.append("import android.view.View;\n");
-        builder.append("import com.zksyp.lib_bind.Finder;\n");
-        builder.append("import com.zksyp.lib_bind.AbstractBinder;\n");
+        builder.append("import com.zksyp.lib_bind.Utils;\n");
         builder.append('\n');
-
         builder.append("public class ").append(suffixClassName);
-        builder.append("<T extends ").append(getTargetClassName()).append(">");
-        builder.append(" implements AbstractBinder<T>");
-        builder.append("{\n");
-
         builder.append("  private ").append(getTargetClassName()).append(" target;\n\n");
-
         builder.append(generateInjectMethod());
         builder.append("\n");
         builder.append("}\n");
@@ -66,18 +58,20 @@ public class ViewBindInjector {
     private String generateInjectMethod() {
         StringBuilder sb = new StringBuilder();
 
-        sb.append(" @Override ").append("public void bind(final Finder finder, final T target, Object source) {\n");
-        sb.append("  View view;\n");
+        sb.append("  public ").append(suffixClassName).append("(").append(getTargetClassName())
+                .append(" target").append(") {\n").append("   this(target, target.getWindow().getDecorView());\n}\n\n");
+
+        sb.append("  public ").append(suffixClassName).append("(").append(getTargetClassName())
+                .append(" target").append(", View source").append(") {\n").append("   this.target = target;\n\n");
+
         for (int key : idViewMap.keySet()) {
             ViewInfo viewInfo = idViewMap.get(key);
-            sb.append("  view = ");
-            sb.append("finder.findViewById(source , ");
-            sb.append(viewInfo.getId()).append(" );\n");
-            sb.append("  target.").append(viewInfo.getName()).append(" = ");
-            sb.append("finder.castView( view ").append(", ").append(viewInfo.getId()).append(" , \"");
-            sb.append(viewInfo.getName() + " \" );");
+            sb.append("   target.").append(viewInfo.getName()).append(" = ")
+                    .append("Utils.findRequiredViewAsType(source, ").append(viewInfo.getId())
+                    .append(", \"field ").append("\'").append(viewInfo.getName()).append("'\'\"")
+                    .append(", ").append(viewInfo.getType()).append(".class").append(");\n")
+                    .append("}\n\n");
         }
-        sb.append(" }\n");
         return sb.toString();
     }
 
