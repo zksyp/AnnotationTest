@@ -7,7 +7,7 @@
         jumboMode="false"
         optimize="true"
         revision="25.0.2"
-        sha1="ce16678d1b10a67a2db5b6ed69f65f629b92d685">
+        sha1="bb8e02a63c1a90cdbc64b41972e0e79652501506">
         <dex dex="/Users/kaishen/AnnotationTest/app/build/intermediates/pre-dexed/debug/lib_bind_annotation_f512cdbd4d482afc82658f8a2ca95af23dc874f4.jar" />
     </item>
     <item

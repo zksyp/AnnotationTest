@@ -39,7 +39,7 @@ import javax.tools.JavaFileObject;
  */
 
 @AutoService(Processor.class)
-@SupportedAnnotationTypes({"com.zksyp.annotation.BindView3","com.zksyp.annotation.BindView4"})
+@SupportedAnnotationTypes({"com.zksyp.annotation.BindView3", "com.zksyp.annotation.BindView4"})
 @SupportedSourceVersion(SourceVersion.RELEASE_7)
 public class BindANProcessor extends AbstractProcessor {
 
@@ -53,6 +53,7 @@ public class BindANProcessor extends AbstractProcessor {
     public Set<String> getSupportedAnnotationTypes() {
         Set<String> annotations = new LinkedHashSet<String>();
         annotations.add(BindView3.class.getCanonicalName());
+        annotations.add(BindView4.class.getCanonicalName());
         return annotations;
 
     }
@@ -111,7 +112,7 @@ public class BindANProcessor extends AbstractProcessor {
         return true;
     }
 
-    private Map<String,ViewBindInjector2> findAndParseTargets4(RoundEnvironment env) {
+    private Map<String, ViewBindInjector2> findAndParseTargets4(RoundEnvironment env) {
         Map<String, ViewBindInjector2> targetViewMap = new LinkedHashMap<>();
 
         for (Element ele : env.getElementsAnnotatedWith(BindView4.class)) {
